@@ -75,75 +75,76 @@ function canvaaa() {
 
   function files(index) {
     var data = `
-  ./frames00007.png
-  ./frames00010.png
-  ./frames00013.png
-  ./frames00016.png
-  ./frames00019.png
-  ./frames00022.png
-  ./frames00025.png
-  ./frames00028.png
-  ./frames00031.png
-  ./frames00034.png
-  ./frames00037.png
-  ./frames00040.png
-  ./frames00043.png
-  ./frames00046.png
-  ./frames00049.png
-  ./frames00052.png
-  ./frames00055.png
-  ./frames00058.png
-  ./frames00061.png
-  ./frames00064.png
-  ./frames00067.png
-  ./frames00070.png
-  ./frames00073.png
-  ./frames00076.png
-  ./frames00079.png
-  ./frames00082.png
-  ./frames00085.png
-  ./frames00088.png
-  ./frames00091.png
-  ./frames00094.png
-  ./frames00097.png
-  ./frames00100.png
-  ./frames00103.png
-  ./frames00106.png
-  ./frames00109.png
-  ./frames00112.png
-  ./frames00115.png
-  ./frames00118.png
-  ./frames00121.png
-  ./frames00124.png
-  ./frames00127.png
-  ./frames00130.png
-  ./frames00133.png
-  ./frames00136.png
-  ./frames00139.png
-  ./frames00142.png
-  ./frames00145.png
-  ./frames00148.png
-  ./frames00151.png
-  ./frames00154.png
-  ./frames00157.png
-  ./frames00160.png
-  ./frames00163.png
-  ./frames00166.png
-  ./frames00169.png
-  ./frames00172.png
-  ./frames00175.png
-  ./frames00178.png
-  ./frames00181.png
-  ./frames00184.png
-  ./frames00187.png
-  ./frames00190.png
-  ./frames00193.png
-  ./frames00196.png
-  ./frames00199.png
-  ./frames00202.png
- `;
-    return data.split("\n")[index];
+images/frames00007.png
+images/frames00010.png
+images/frames00013.png
+images/frames00016.png
+images/frames00019.png
+images/frames00022.png
+images/frames00025.png
+images/frames00028.png
+images/frames00031.png
+images/frames00034.png
+images/frames00037.png
+images/frames00040.png
+images/frames00043.png
+images/frames00046.png
+images/frames00049.png
+images/frames00052.png
+images/frames00055.png
+images/frames00058.png
+images/frames00061.png
+images/frames00064.png
+images/frames00067.png
+images/frames00070.png
+images/frames00073.png
+images/frames00076.png
+images/frames00079.png
+images/frames00082.png
+images/frames00085.png
+images/frames00088.png
+images/frames00091.png
+images/frames00094.png
+images/frames00097.png
+images/frames00100.png
+images/frames00103.png
+images/frames00106.png
+images/frames00109.png
+images/frames00112.png
+images/frames00115.png
+images/frames00118.png
+images/frames00121.png
+images/frames00124.png
+images/frames00127.png
+images/frames00130.png
+images/frames00133.png
+images/frames00136.png
+images/frames00139.png
+images/frames00142.png
+images/frames00145.png
+images/frames00148.png
+images/frames00151.png
+images/frames00154.png
+images/frames00157.png
+images/frames00160.png
+images/frames00163.png
+images/frames00166.png
+images/frames00169.png
+images/frames00172.png
+images/frames00175.png
+images/frames00178.png
+images/frames00181.png
+images/frames00184.png
+images/frames00187.png
+images/frames00190.png
+images/frames00193.png
+images/frames00196.png
+images/frames00199.png
+images/frames00202.png
+`;
+    return data.trim().split("\n")[index];
   }
+
   const frameCount = 67;
 
   const images = [];
@@ -208,7 +209,7 @@ function canvaaa() {
     end: `600% top`,
   });
 }
-canvaaa()
+canvaaa();
 
 var clutter1 = "";
 document
@@ -314,7 +315,7 @@ function canvaaa2() {
     ./bridges00202.png
     `;
     return data.split("\n")[index];
-    }
+  }
   const frameCount = 67;
 
   const images = [];
@@ -379,8 +380,7 @@ function canvaaa2() {
     end: `600% top`,
   });
 }
-canvaaa2()
-
+canvaaa2();
 
 var clutter1 = "";
 document
@@ -402,22 +402,21 @@ gsap.to("#page6>h1>span", {
   color: `#fff`,
 });
 
-function canvas2(){
+function canvas2() {
   const canvas = document.querySelector("#page7>canvas");
-const context = canvas.getContext("2d");
+  const context = canvas.getContext("2d");
 
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
 
+  window.addEventListener("resize", function () {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    render();
+  });
 
-window.addEventListener("resize", function () {
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-render();
-});
-
-function files(index) {
-var data = `
+  function files(index) {
+    var data = `
 
 https://thisismagma.com/assets/home/lore/seq/1.webp?2
 https://thisismagma.com/assets/home/lore/seq/2.webp?2
@@ -557,92 +556,90 @@ https://thisismagma.com/assets/home/lore/seq/135.webp?2
 https://thisismagma.com/assets/home/lore/seq/136.webp?2
 
 `;
-return data.split("\n")[index];
+    return data.split("\n")[index];
+  }
+
+  const frameCount = 136;
+
+  const images = [];
+  const imageSeq = {
+    frame: 1,
+  };
+
+  for (let i = 0; i < frameCount; i++) {
+    const img = new Image();
+    img.src = files(i);
+    images.push(img);
+  }
+
+  gsap.to(imageSeq, {
+    frame: frameCount - 1,
+    snap: "frame",
+    ease: `none`,
+    scrollTrigger: {
+      scrub: 0.5,
+      trigger: `#page7`,
+      start: `top top`,
+      end: `250% top`,
+      scroller: `#main`,
+    },
+    onUpdate: render,
+  });
+
+  images[1].onload = render;
+
+  function render() {
+    scaleImage(images[imageSeq.frame], context);
+  }
+
+  function scaleImage(img, ctx) {
+    var canvas = ctx.canvas;
+    var hRatio = canvas.width / img.width;
+    var vRatio = canvas.height / img.height;
+    var ratio = Math.max(hRatio, vRatio);
+    var centerShift_x = (canvas.width - img.width * ratio) / 2;
+    var centerShift_y = (canvas.height - img.height * ratio) / 2;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.drawImage(
+      img,
+      0,
+      0,
+      img.width,
+      img.height,
+      centerShift_x,
+      centerShift_y,
+      img.width * ratio,
+      img.height * ratio
+    );
+  }
+  ScrollTrigger.create({
+    trigger: "#page7",
+    pin: true,
+    scroller: `#main`,
+    start: `top top`,
+    end: `250% top`,
+  });
 }
+canvas2();
 
-const frameCount = 136;
-
-const images = [];
-const imageSeq = {
-frame: 1,
-};
-
-for (let i = 0; i < frameCount; i++) {
-const img = new Image();
-img.src = files(i);
-images.push(img);
-}
-
-gsap.to(imageSeq, {
-frame: frameCount - 1,
-snap: "frame",
-ease: `none`,
-scrollTrigger: {
-  scrub: .5,
-  trigger: `#page7`,
-  start: `top top`,
-  end: `250% top`,
-  scroller: `#main`,
-},
-onUpdate: render,
-});
-
-images[1].onload = render;
-
-function render() {
-scaleImage(images[imageSeq.frame], context);
-}
-
-function scaleImage(img, ctx) {
-var canvas = ctx.canvas;
-var hRatio = canvas.width / img.width;
-var vRatio = canvas.height / img.height;
-var ratio = Math.max(hRatio, vRatio);
-var centerShift_x = (canvas.width - img.width * ratio) / 2;
-var centerShift_y = (canvas.height - img.height * ratio) / 2;
-ctx.clearRect(0, 0, canvas.width, canvas.height);
-ctx.drawImage(
-  img,
-  0,
-  0,
-  img.width,
-  img.height,
-  centerShift_x,
-  centerShift_y,
-  img.width * ratio,
-  img.height * ratio
-);
-}
-ScrollTrigger.create({
-
-trigger: "#page7",
-pin: true,
-scroller: `#main`,
-start: `top top`,
-end: `250% top`,
-});
-}
-canvas2()
-
-gsap.to(".page7cir",{
-  scrollTrigger:{
-    trigger:".page7cir",
-    start:"top center",
-    end:"bottom top",
-    scroller:"#main",
-    scrub:.5
+gsap.to(".page7cir", {
+  scrollTrigger: {
+    trigger: ".page7cir",
+    start: "top center",
+    end: "bottom top",
+    scroller: "#main",
+    scrub: 0.5,
   },
-  scale: 1.4
-})
+  scale: 1.4,
+});
 
-
-gsap.to(".page7cirinr",{
-  scrollTrigger:{
-    trigger:".page7cir",
-    start:"top center",
-    end:"bottom top",
-    scroller:"#main",
-    scrub:.5
+gsap.to(".page7cirinr", {
+  scrollTrigger: {
+    trigger: ".page7cir",
+    start: "top center",
+    end: "bottom top",
+    scroller: "#main",
+    scrub: 0.5,
   },
   backgroundColor: "#0a3cce91",
-})
+});
